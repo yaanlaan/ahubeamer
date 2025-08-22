@@ -73,6 +73,8 @@ make build
 make clean-build
 # 清理根目录的辅助文件，保留pdf
 make clean-root
+# 同时执行两个清理
+clean
 # 清理所有辅助文件，并且删除pdf
 make clean-all
 ```
