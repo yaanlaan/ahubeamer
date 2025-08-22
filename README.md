@@ -37,7 +37,7 @@
 - 支持中文排版（使用 ctex 宏包）
 - 包含自定义主题 `ahutheme.sty`，可轻松定制外观
 - 支持数学公式、列表、表格、图片等常见演示元素
-- 使用 BibLaTeX 和 biber 管理参考文献
+- 使用 XeLaTeX 和 biber 管理参考文献
 - 通过 Makefile 简化构建流程
 - 支持多列布局、子图、TikZ 绘图等高级功能
 
