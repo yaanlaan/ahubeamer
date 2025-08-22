@@ -1,0 +1,155 @@
+\mode<presentation>
+
+% 要求的版本
+\RequirePackage{pgf}
+
+
+% 定义颜色
+\definecolor{yantex@main}{RGB}{56, 67, 120}      % 主蓝色
+\definecolor{yantex@light}{RGB}{224, 242, 255}    % 浅蓝色
+\definecolor{yantex@dark}{RGB}{43, 51, 92}       % 深蓝色
+\definecolor{yantex@gray}{RGB}{245, 245, 245}     % 浅灰色
+\definecolor{yantex@darkgray}{RGB}{117, 117, 117} % 深灰色
+
+% 设置背景图片，如果不喜欢可以更换背景或者注释隐藏
+\pgfdeclareimage[width=\paperwidth,height=\paperheight]{background}{assets/background.pdf}
+\setbeamertemplate{background}{
+  \begin{pgfpicture}{0cm}{0cm}{\paperwidth}{\paperheight}
+    % 背景图片
+    \pgftext[at=\pgfpoint{0cm}{0cm},left,bottom]{\pgfuseimage{background}}
+    % 添加半透明遮罩以提高文本可读性
+    \pgfsetfillopacity{0.8}
+    \pgfsetfillcolor{white}
+    \pgfpathrectangle{\pgfpoint{0cm}{0cm}}{\pgfpoint{\paperwidth}{\paperheight}}
+    \pgfusepath{fill}
+  \end{pgfpicture}
+}
+
+% 设置颜色主题
+\setbeamercolor*{structure}{fg=yantex@main}
+\setbeamercolor*{title}{fg=white, bg=yantex@main}
+\setbeamercolor*{subtitle}{fg=white}
+\setbeamercolor*{author}{fg=white}
+\setbeamercolor*{institute}{fg=white}
+\setbeamercolor*{date}{fg=white}
+\setbeamercolor*{frametitle}{fg=white, bg=yantex@main}
+\setbeamercolor*{framesubtitle}{fg=yantex@dark}
+\setbeamercolor*{normal text}{fg=black, bg=}
+
+% 设置导航栏颜色
+\setbeamercolor*{section in head/foot}{fg=white, bg=yantex@dark}
+\setbeamercolor*{subsection in head/foot}{fg=white!90!yantex@main, bg=yantex@dark}
+
+% 设置块环境颜色
+\setbeamercolor*{block title}{fg=white, bg=yantex@main}
+\setbeamercolor*{block body}{fg=black, bg=yantex@light}
+\setbeamercolor*{block title alerted}{fg=white, bg=red!70!black}
+\setbeamercolor*{block body alerted}{fg=black, bg=red!10}
+\setbeamercolor*{block title example}{fg=white, bg=green!50!black}
+\setbeamercolor*{block body example}{fg=black, bg=green!10}
+
+% 设置页眉，水平导航栏
+\setbeamertemplate{headline}{
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.6ex,dp=1ex]{section in head/foot}
+    \hfill\insertsectionnavigationhorizontal{\paperwidth}{}{}\hfill
+  \end{beamercolorbox}
+}
+
+% 设置框架标题
+\setbeamertemplate{frametitle}{
+  \vspace{-0.25ex}% 微调垂直位置
+  \begin{beamercolorbox}[wd=\paperwidth,ht=3ex,dp=0.8ex]{frametitle}
+    \hspace*{0.3cm}\strut\insertframetitle\strut
+    \hfill
+    % 不喜欢右上角的logo可以注释隐藏
+    \raisebox{0.2ex}{\includegraphics[height=2ex]{assets/logo.png}}\hspace*{0.4cm}
+  \end{beamercolorbox}
+}
+
+% 设置页脚 - 三部分使用不同背景颜色
+\setbeamertemplate{footline}{
+  \hbox to \paperwidth{%
+  \begin{beamercolorbox}[wd=0.333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}
+    \usebeamerfont{author in head/foot}\insertauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=0.334\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=0.333\paperwidth,ht=2.25ex,dp=1ex,center]{date in head/foot}
+    \usebeamerfont{date in head/foot}%
+    \insertshortdate{}\hspace*{1em}%
+    \insertframenumber{} / \inserttotalframenumber
+  \end{beamercolorbox}%
+  }
+}
+
+% 定义页脚各部分的颜色
+\setbeamercolor*{author in head/foot}{fg=white, bg=yantex@main}
+\setbeamercolor*{title in head/foot}{fg=black, bg=yantex@light}
+\setbeamercolor*{date in head/foot}{fg=white, bg=yantex@dark}
+
+% 设置标题页
+\setbeamertemplate{title page}{
+  \vfill
+  \hspace*{0.4cm}% 微调水平位置
+  \begin{beamercolorbox}[wd=0.8\paperwidth, sep=8pt, rounded=true, shadow=true, center]{title}
+    \centering
+    \usebeamerfont{title}\inserttitle\par%
+    \ifx\insertsubtitle\@empty%
+    \else%
+      \vskip0.5em%
+      {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+    \fi%
+  \end{beamercolorbox}
+  
+  \vskip2em
+  
+  \begin{beamercolorbox}[wd=\paperwidth, center]{normal text}
+    \centering
+    \usebeamerfont{author}\insertauthor\par
+    \vskip0.5em
+    \usebeamerfont{institute}\insertinstitute\par
+    \vskip1em
+    \usebeamerfont{date}\insertdate\par
+  \end{beamercolorbox}
+  \vfill
+}
+
+% 设置目录样式
+\setbeamertemplate{section in toc}[circle]
+\setbeamertemplate{subsection in toc}[square]
+\setbeamertemplate{subsubsection in toc}[default]
+
+% 设置块环境
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+% 设置导航符号
+\setbeamertemplate{navigation symbols}{
+  \insertslidenavigationsymbol
+  \insertframenavigationsymbol
+  \insertsubsectionnavigationsymbol
+  \insertsectionnavigationsymbol
+  \insertdocnavigationsymbol
+  \insertbackfindforwardnavigationsymbol
+}
+
+% 设置项目符号
+\setbeamertemplate{itemize item}[square]
+\setbeamertemplate{itemize subitem}[circle]
+\setbeamertemplate{itemize subsubitem}[triangle]
+
+\setbeamercolor*{itemize item}{fg=yantex@main}
+\setbeamercolor*{itemize subitem}{fg=yantex@main}
+\setbeamercolor*{itemize subsubitem}{fg=yantex@main}
+
+
+% 设置枚举项样式 - 与项目符号风格一致
+\setbeamertemplate{enumerate item}[square]
+\setbeamertemplate{enumerate subitem}[circle]
+\setbeamertemplate{enumerate subsubitem}[default]
+
+\setbeamercolor*{enumerate item}{fg=white, bg=yantex@main}
+\setbeamercolor*{enumerate subitem}{fg=white, bg=yantex@dark}
+\setbeamercolor*{enumerate subsubitem}{fg=black, bg=yantex@light}
+
+\mode<all>
