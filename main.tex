@@ -29,13 +29,30 @@
 \institute{Anhui University}
 \date{\today}
 
+% 在每个section之前插入目录页
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{本节大纲}
+    \tableofcontents[
+                 sectionstyle=show/shaded, 
+                 subsectionstyle=show/show/hide]
+  \end{frame}
+}
+
 \begin{document}
 
 % 标题页
-\frame{\titlepage}
+\begingroup
+\setbeamertemplate{headline}{}
+\begin{frame}
+\titlepage
+\end{frame}
+\endgroup
 
 % 目录页
 \begin{frame}
+\setbeamertemplate{headline}{}
 \frametitle{目录}
 \tableofcontents
 \end{frame}
