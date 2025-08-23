@@ -137,6 +137,9 @@ make output NAME=my_presentation
 % 设置右下角的logo，注释可以取消
 \logo{\includegraphics[height=1cm]{assets/logo2.png}}
 ```
+## 关于修改
+
+如果是外校，或者想要用于自己某个组织团体的话，只需要提取自己logo上的颜色并修改main、dark、light三处颜色设置就可以有很好的风格化效果。记得将水印替换成自己的。
 
 ## 许可证
 
