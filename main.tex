@@ -30,13 +30,35 @@
 \date{\today}
 
 % 在每个section之前插入目录页
+% \AtBeginSection[]
+% {
+%   \begin{frame}
+%     \frametitle{\insertsectionhead}
+%     \tableofcontents[
+%                  sectionstyle=show/shaded, 
+%                  subsectionstyle=show/show/hide]
+%   \end{frame}
+% }
+
+% 分点过多的时候可以用这个
 \AtBeginSection[]
 {
   \begin{frame}
     \frametitle{\insertsectionhead}
+    \begin{columns}[onlytextwidth]
+    \begin{column}{0.5\textwidth}
     \tableofcontents[
                  sectionstyle=show/shaded, 
-                 subsectionstyle=show/show/hide]
+                 subsectionstyle=show/show/hide,
+                 sections={1-4}]
+    \end{column}
+    \begin{column}{0.5\textwidth}
+    \tableofcontents[
+                 sectionstyle=show/shaded, 
+                 subsectionstyle=show/show/hide,
+                 sections={5-100}]
+    \end{column}
+    \end{columns}
   \end{frame}
 }
 
@@ -56,6 +78,21 @@
 \frametitle{目录}
 \tableofcontents
 \end{frame}
+
+
+% 目录页（分点过多的时候可以用这个）
+% \begin{frame}
+% \frametitle{目录}
+% \begin{columns}[onlytextwidth]
+% \begin{column}{0.5\textwidth}
+% \tableofcontents[sections={1-3}]
+% \end{column}
+% \begin{column}{0.5\textwidth}
+% \tableofcontents[sections={4-100}]%数字大没关系
+% \end{column}
+% \end{columns}
+% \end{frame}
+
 
 % 内容示例
 \section{介绍}
