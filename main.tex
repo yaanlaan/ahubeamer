@@ -4,7 +4,7 @@
 \setmainfont{Times New Roman}
 \setsansfont{Arial}
 \setmonofont{Courier New}
-
+\usepackage{booktabs}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{graphicx}
 \usepackage{subfig}
@@ -12,6 +12,7 @@
 \usepackage{caption}
 \setbeamertemplate{caption}[numbered]
 \setbeamersize{text margin left=1cm, text margin right=1cm}
+
 % 使用biblatex管理参考文献
 \usepackage[backend=biber,style=authoryear]{biblatex}
 \addbibresource{citation/references.bib}
@@ -259,6 +260,8 @@ TikZ绘图说明文字\\
 \end{columns}
 \end{frame}
 
+
+\section{图表展示}
 % 子图展示示例
 \begin{frame}
 \frametitle{子图展示示例}
@@ -276,19 +279,23 @@ TikZ绘图说明文字\\
 % 表格展示示例
 \begin{frame}
 \frametitle{表格展示示例}
-\begin{table}
+
+\begin{table}[H]
+\caption{\textbf{Example 4}}
 \centering
-\begin{tabular}{|c|c|c|}
-\hline
-姓名 & 年龄 & 城市 \\
-\hline
-张三 & 25 & 北京 \\
-李四 & 30 & 上海 \\
-王五 & 28 & 广州 \\
-\hline
+\begin{tabular}{cccc}
+\toprule
+&\multicolumn{2}{c}{Resultsummary}& \\
+Item1&Item2&Item3&Item4 \\
+\midrule 
+Data1&Data2&Data3&Data4 \\
+\midrule
+Data5&Data6&Data7&Data8 \\
+\bottomrule
 \end{tabular}
-\caption{人员信息表}
 \end{table}
+
+
 这是对表格内容的简要描述。
 \end{frame}
 
@@ -297,48 +304,18 @@ TikZ绘图说明文字\\
 \frametitle{TikZ绘图示例}
 \begin{figure}
 \centering
-\begin{tikzpicture}
-\draw[thick, rounded corners=8pt] 
-(0,0) -- (0,2) -- (1,3) -- (2,2) -- (2,0) -- (0,0);
-\draw (1,1.5) node {示例图形};
+\begin{tikzpicture}[x={(1cm,0cm)}, y={(0.5cm,0.5cm)}, z={(0cm,1cm)}]
+  % 绘制立方体
+  \draw[fill=blue!20] (0,0,0) -- (2,0,0) -- (2,2,0) -- (0,2,0) -- cycle;
+  \draw[fill=red!20] (0,0,0) -- (0,0,2) -- (0,2,2) -- (0,2,0) -- cycle;
+  \draw[fill=green!20] (0,0,0) -- (2,0,0) -- (2,0,2) -- (0,0,2) -- cycle;
+  \draw[fill=yellow!20] (2,0,0) -- (2,2,0) -- (2,2,2) -- (2,0,2) -- cycle;
+  \draw[fill=purple!20] (0,2,0) -- (2,2,0) -- (2,2,2) -- (0,2,2) -- cycle;
+  \draw[fill=cyan!20] (0,0,2) -- (2,0,2) -- (2,2,2) -- (0,2,2) -- cycle;
 \end{tikzpicture}
 \caption{TikZ绘制的示例图形}
 \end{figure}
 这是对TikZ绘图的简要描述。
-\end{frame}
-
-% 列表环境
-\section{列表环境}
-\begin{frame}
-\frametitle{列表环境}
-\begin{enumerate}
-  \item 这是一个有序列表的第一项
-  \item 这是第二项
-  \begin{enumerate}
-    \item 这是子列表的第一项
-    \item 这是子列表的第二项
-    \begin{enumerate}
-      \item 这是子子列表的第一项
-      \item 这是子子列表的第二项
-    \end{enumerate}
-  \end{enumerate}
-  \item 这是最后一项
-\end{enumerate}
-
-\begin{itemize}
-  \item 这是一个有序列表的第一项
-  \item 这是第二项
-  \begin{itemize}
-    \item 这是子列表的第一项
-    \item 这是子列表的第二项
-    \begin{itemize}
-      \item 这是子子列表的第一项
-      \item 这是子子列表的第二项
-    \end{itemize}
-  \end{itemize}
-  \item 这是最后一项
-\end{itemize}
-
 \end{frame}
 
 
