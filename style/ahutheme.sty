@@ -11,6 +11,11 @@
 \definecolor{yantex@gray}{RGB}{245, 245, 245}     % 浅灰色
 \definecolor{yantex@darkgray}{RGB}{117, 117, 117} % 深灰色
 
+% 设置block颜色
+\definecolor{block@example}{RGB}{53, 184, 108}      % 绿
+\definecolor{block@alertblock}{RGB}{156, 77, 77}    % 红
+\definecolor{block@block}{RGB}{88, 99, 155}      % 蓝
+
 % 设置背景图片，如果不喜欢可以更换背景或者注释隐藏
 \pgfdeclareimage[width=\paperwidth,height=\paperheight]{background}{assets/background.pdf}
 \setbeamertemplate{background}{
@@ -151,5 +156,15 @@
 \setbeamercolor*{enumerate item}{fg=white, bg=yantex@main}
 \setbeamercolor*{enumerate subitem}{fg=white, bg=yantex@dark}
 \setbeamercolor*{enumerate subsubitem}{fg=black, bg=yantex@light}
+
+% block颜色
+\setbeamercolor*{block title example}{fg=white, bg=block@example}
+\setbeamercolor*{block body example}{fg=black, bg=block@example!10!white} 
+
+\setbeamercolor*{block title alerted}{fg=white, bg=block@alertblock}
+\setbeamercolor*{block body alerted}{fg=black, bg=block@alertblock!10!white} 
+
+\setbeamercolor*{block title}{fg=white, bg=block@block}
+\setbeamercolor*{block body}{fg=black, bg=block@block!10!white} 
 
 \mode<all>
