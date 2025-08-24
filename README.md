@@ -1,6 +1,6 @@
 # AHU Beamer 模板
 
-作为字典序排名第一的211高校，居然找不到自己的AHU beamer模板，实在是遗憾。于是做了个简单的demo。
+作为字典序排名第一的211高校，居然找不到自己的beamer模板，实在是遗憾。于是做了个简单的demo。
 其实主要是添加了三种水印，至于其他的格式可以自己调整。
 
 ## 预览图
@@ -18,17 +18,18 @@
 
 ```
 .
-├── assets/                 # 资源文件夹（logo、背景等）
-├── build/                  # 构建输出目录
-├── citation/               # 参考文献文件
-│   └── references.bib      # BibTeX 参考文献数据库
-├── output/                 # 最终PDF输出目录
-├── src/                    # 源文件（图片等）
-├── style/                  # 样式文件
-│   └── ahutheme.sty        # 自定义主题文件
-├── main.tex                # 主 LaTeX 文件
-├── Makefile                # 构建脚本
-└── README.md               # 项目说明文件
+├── Makefile		# make脚本
+├── README.md		# readme
+├── assets		# 静态资源
+├── build		# 构建文件夹
+├── citation		# 文献
+├── main.tex		# 主tex文件
+├── output		# 输出文件夹
+├── pages		# 固定页面（封面、目录、致谢等）
+├── sections		# 章节（适合较长文件）
+├── src			# 资源文件（图片等）
+└── style		# 样式文件夹
+
 ```
 
 ## 功能特性
@@ -137,6 +138,7 @@ make output NAME=my_presentation
 % 设置右下角的logo，注释可以取消
 \logo{\includegraphics[height=1cm]{assets/logo2.png}}
 ```
+
 ## 关于修改
 
 如果是外校，或者想要用于自己某个组织团体的话，只需要提取自己logo上的颜色并修改main、dark、light三处颜色设置就可以有很好的风格化效果。记得将水印替换成自己的。
