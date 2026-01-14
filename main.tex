@@ -1,22 +1,13 @@
-\documentclass[10pt]{beamer}
+\documentclass[10pt]{beamer} % 推荐使用16:9比例
+% \special{dvipdfmx:config z 0} 
 
-\usepackage{ctex}
-\setmainfont{Times New Roman}
-\setsansfont{Arial}
-\setmonofont{Courier New}
-\usefonttheme[onlymath]{serif}
+% 引入自定义主题（包含字体设置和常用包）
+\usepackage{style/ahutheme}
 
-\usepackage{booktabs}
-\usepackage{amsmath,amssymb,amsfonts}
-\usepackage{graphicx}
-\usepackage{subfig}
-\usepackage{tikz}
-\usepackage{caption}
-\setbeamertemplate{caption}[numbered]
+% 页边距设置
 \setbeamersize{text margin left=1cm, text margin right=1cm}
 
-% 使用biblatex管理参考文献
-\usepackage[backend=biber,style=authoryear]{biblatex}
+\usepackage[backend=biber,style=gb7714-2015]{biblatex} % 推荐使用符合国标的格式
 \addbibresource{citation/references.bib}
 
 % 添加主题

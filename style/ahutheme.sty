@@ -3,6 +3,44 @@
 % 要求的版本
 \RequirePackage{pgf}
 
+% ==================== 字体设置 ====================
+% 中文支持
+\RequirePackage{ctex}
+
+% 英文字体设置
+\setsansfont{Arial}              % 主体使用无衬线
+\setmainfont{Times New Roman}    % 正文细节
+\setmonofont{Consolas}           % 代码展示
+
+% 中文字体设置
+\setCJKsansfont{Microsoft YaHei} % 标题、正文：微软雅黑（清晰）
+\setCJKmainfont{SimHei}          % 或使用黑体
+\setCJKmonofont{Consolas}        % 代码保持一致
+
+% 数学公式字体
+\usefonttheme[onlymath]{serif}
+
+% ==================== 常用包引入 ====================
+% 数学相关
+\RequirePackage{amsmath,amssymb,amsfonts}
+
+% 图形相关
+\RequirePackage{graphicx}
+\RequirePackage{subfig}
+
+% TikZ绘图
+\RequirePackage{tikz}
+\usetikzlibrary{matrix, 3d, positioning, arrows.meta, calc, decorations.pathreplacing, shapes.geometric, fit, backgrounds, shapes.arrows}
+
+% 表格美化
+\RequirePackage{booktabs}
+
+% 图表标题
+\RequirePackage{caption}
+\setbeamertemplate{caption}[numbered]
+
+% ==================== 颜色定义 ====================
+
 
 % 定义颜色
 \definecolor{yantex@main}{RGB}{56, 67, 120}      % 主蓝色
@@ -17,11 +55,12 @@
 \definecolor{block@block}{RGB}{88, 99, 155}      % 蓝
 
 % 设置背景图片，如果不喜欢可以更换背景或者注释隐藏
-\pgfdeclareimage[width=\paperwidth,height=\paperheight]{background}{assets/background.pdf}
 \setbeamertemplate{background}{
   \begin{pgfpicture}{0cm}{0cm}{\paperwidth}{\paperheight}
-    % 背景图片
-    \pgftext[at=\pgfpoint{0cm}{0cm},left,bottom]{\pgfuseimage{background}}
+    % 背景图片 - 靠右对齐
+    \pgftext[at=\pgfpoint{\paperwidth}{0.5\paperheight},right]{
+      \includegraphics[width=\paperwidth, height=\paperheight, keepaspectratio=true]{assets/background.pdf}
+    }
     % 添加半透明遮罩以提高文本可读性
     \pgfsetfillopacity{0.8}
     \pgfsetfillcolor{white}
@@ -67,7 +106,7 @@
     \hspace*{0.3cm}\strut\insertframetitle\strut
     \hfill
     % 不喜欢右上角的logo可以注释隐藏
-    \raisebox{0.2ex}{\includegraphics[height=2ex]{assets/logo.png}}\hspace*{0.4cm}
+    \raisebox{0.2ex}{\includegraphics[height=2ex, keepaspectratio]{assets/logo.png}}\hspace*{0.4cm}
   \end{beamercolorbox}
 }
 
