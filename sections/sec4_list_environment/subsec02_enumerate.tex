@@ -1,0 +1,37 @@
+\begin{frame}
+\frametitle{有序列表}
+\framesubtitle{三级编号：蓝底白字 → 深蓝底白字 → 浅底黑字}
+
+\begin{columns}[T]
+\column{0.48\textwidth}
+\begin{block}{编译流程}
+\begin{enumerate}
+  \item 编写 \texttt{.tex} 源文件
+  \item 执行 XeLaTeX 编译
+  \begin{enumerate}
+    \item 生成辅助文件
+    \item 解析引用标签
+  \end{enumerate}
+  \item 运行 biber 处理文献
+  \begin{enumerate}
+    \item 读取 \texttt{.bib} 数据库
+    \item 生成 \texttt{.bbl} 文件
+  \end{enumerate}
+  \item 两次 XeLaTeX 定型
+\end{enumerate}
+\end{block}
+
+\column{0.48\textwidth}
+\begin{exampleblock}{编号样式对比}
+\begin{enumerate}
+  \item 第一级：\structure{方块} 白字蓝底
+  \begin{enumerate}
+    \item 第二级：\structure{圆圈} 白字深蓝底
+    \begin{enumerate}
+      \item 第三级：\structure{数字} 黑字浅蓝底
+    \end{enumerate}
+  \end{enumerate}
+\end{enumerate}
+\end{exampleblock}
+\end{columns}
+\end{frame}

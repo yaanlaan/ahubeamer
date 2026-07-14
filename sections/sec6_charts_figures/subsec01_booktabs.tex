@@ -1,0 +1,29 @@
+\begin{frame}
+\frametitle{精美表格}
+\framesubtitle{booktabs 宏包——三线表}
+
+\begin{block}{学术三线表示例}
+\centering
+\begin{tabular}{lccc}
+\toprule
+\textbf{模型} & \textbf{准确率} & \textbf{参数量} & \textbf{推理速度} \\
+\midrule
+LeNet-5    & 92.3\% & 60K   & 1.2ms \\
+AlexNet    & 84.7\% & 62M   & 4.8ms \\
+VGG-16     & 90.1\% & 138M  & 8.3ms \\
+ResNet-50  & 93.5\% & 25.6M & 5.1ms \\
+\bottomrule
+\end{tabular}
+\end{block}
+
+\vspace{0.3em}
+
+\begin{exampleblock}{booktabs 规则}
+\begin{itemize}
+  \item \texttt{\textbackslash toprule} — 表格顶部粗线
+  \item \texttt{\textbackslash midrule} — 表头分隔线
+  \item \texttt{\textbackslash bottomrule} — 表格底部粗线
+  \item 避免使用竖线，保持简洁专业的学术风格
+\end{itemize}
+\end{exampleblock}
+\end{frame}

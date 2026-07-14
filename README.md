@@ -5,14 +5,13 @@
 
 ## 预览图
 
-![首页](assets/preview/home.jpg)
-![目录页](assets/preview/toc.jpg)
-![各种块](assets/preview/blocks.jpg)
-![公式](assets/preview/formula.jpg)
-![图片](assets/preview/imgs.jpg)
-![参考文献1](assets/preview/bib1.jpg)
-![参考文献1](assets/preview/bib2.jpg)
-![致谢](assets/preview/thanks.jpg)
+![首页](assets/preview/main_p01.png)
+![目录页](assets/preview/main_p02.png)
+![各种块](assets/preview/main_p07.png)
+![公式](assets/preview/main_p10.png)
+![图片](assets/preview/main_p18.png)
+![参考文献](assets/preview/main_p26.png)
+![致谢](assets/preview/main_p27.png)
 
 ## 项目结构
 
@@ -95,15 +94,16 @@ make output NAME=my_presentation
 
 ### 背景水印
 
-在 [style/ahutheme.sty](style/ahutheme.sty#L14)中修改以下内容：
+在 [style/ahutheme.sty](style/ahutheme.sty#L57)中修改以下内容：
 
 ```tex
 % 设置背景图片，如果不喜欢可以更换背景或者注释隐藏
-\pgfdeclareimage[width=\paperwidth,height=\paperheight]{background}{assets/background.pdf}
 \setbeamertemplate{background}{
   \begin{pgfpicture}{0cm}{0cm}{\paperwidth}{\paperheight}
-    % 背景图片
-    \pgftext[at=\pgfpoint{0cm}{0cm},left,bottom]{\pgfuseimage{background}}
+    % 背景图片 - 靠右对齐
+    \pgftext[at=\pgfpoint{\paperwidth}{0.5\paperheight},right]{
+      \includegraphics[width=\paperwidth, height=\paperheight, keepaspectratio=true]{assets/background.pdf}
+    }
     % 添加半透明遮罩以提高文本可读性
     \pgfsetfillopacity{0.8}
     \pgfsetfillcolor{white}
@@ -115,7 +115,7 @@ make output NAME=my_presentation
 
 ### 框架水印（右上角）
 
-在 [style/ahutheme.sty](style/ahutheme.sty#L58)中修改以下内容：
+在 [style/ahutheme.sty](style/ahutheme.sty#L103)中修改以下内容：
 
 ```tex
 % 设置框架标题
@@ -125,14 +125,14 @@ make output NAME=my_presentation
     \hspace*{0.3cm}\strut\insertframetitle\strut
     \hfill
     % 不喜欢右上角的logo可以注释隐藏
-    \raisebox{0.2ex}{\includegraphics[height=2ex]{assets/logo.png}}\hspace*{0.4cm}
+    \raisebox{0.2ex}{\includegraphics[height=2ex, keepaspectratio]{assets/logo.png}}\hspace*{0.4cm}
   \end{beamercolorbox}
 }
 ```
 
 ### beamer自带logo水印功能（右下角）
 
-在 [main.tex](main.tex#L22)中修改以下内容：
+在 [main.tex](main.tex#L17)中修改以下内容：
 
 ```tex
 % 设置右下角的logo，注释可以取消

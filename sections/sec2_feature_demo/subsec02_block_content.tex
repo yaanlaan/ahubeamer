@@ -1,0 +1,35 @@
+\begin{frame}
+\frametitle{块内复杂内容}
+\framesubtitle{列表中嵌套块，块中嵌套列表}
+
+\begin{columns}[T]
+\column{0.48\textwidth}
+\begin{block}{技术要点}
+\begin{enumerate}
+  \item 编译流程
+  \begin{itemize}
+    \item XeLaTeX 编译
+    \item biber 处理文献
+    \item 两次 XeLaTeX 定型
+  \end{itemize}
+  \item 目录生成
+  \item 超链接支持
+\end{enumerate}
+\end{block}
+
+\column{0.48\textwidth}
+\begin{exampleblock}{推荐工具}
+\begin{description}
+\item[VS Code] LaTeX Workshop 插件
+\item[TeX Live] 完整 TeX 发行版
+\item[SumatraPDF] 轻量 PDF 阅读器
+\end{description}
+\end{exampleblock}
+
+\vfill
+
+\begin{alertblock}{注意事项}
+编译时请确保使用 \texttt{XeLaTeX} 引擎，并安装中文字体。
+\end{alertblock}
+\end{columns}
+\end{frame}

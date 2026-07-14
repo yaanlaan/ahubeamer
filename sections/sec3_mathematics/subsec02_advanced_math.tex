@@ -1,0 +1,49 @@
+\begin{frame}
+\frametitle{高级公式}
+\framesubtitle{align · matrix · cases}
+
+\begin{columns}[T]
+\column{0.48\textwidth}
+\begin{block}{多行对齐}
+\begin{align}
+  \nabla \cdot \mathbf{E} &= \frac{\rho}{\varepsilon_0} \\
+  \nabla \times \mathbf{E} &= -\frac{\partial \mathbf{B}}{\partial t}
+\end{align}
+麦克斯韦方程组中的两个方程。
+\end{block}
+
+\vfill
+
+\begin{exampleblock}{矩阵}
+\[
+\mathbf{A} = \begin{pmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{pmatrix}
+\]
+\end{exampleblock}
+
+\column{0.48\textwidth}
+\begin{block}{分段函数}
+\[
+f(x) =
+\begin{cases}
+x^2, & x \geq 0 \\
+-x,  & x < 0
+\end{cases}
+\]
+
+求和：$\displaystyle\sum_{k=1}^{n} k^2 = \frac{n(n+1)(2n+1)}{6}$
+\end{block}
+
+\vfill
+
+\begin{exampleblock}{定积分}
+\[
+\int_0^\infty e^{-x^2}\,dx = \frac{\sqrt{\pi}}{2}
+\]
+\end{exampleblock}
+\end{columns}
+\end{frame}

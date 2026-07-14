@@ -1,0 +1,58 @@
+\begin{frame}
+\frametitle{TikZ 高级绘图}
+\framesubtitle{3D 透视 · Matrix 矩阵 · decorations 装饰}
+
+\begin{columns}[T]
+\column{0.48\textwidth}
+\begin{block}{3D 立方体}
+\centering
+\begin{tikzpicture}[x={(0.8cm,0.3cm)}, y={(-0.4cm,0.6cm)}, z={(0cm,0.8cm)}]
+  \draw[fill=yantex@main!20, draw=yantex@main]
+    (0,0,0) -- (2,0,0) -- (2,2,0) -- (0,2,0) -- cycle;
+  \draw[fill=yantex@light, draw=yantex@main]
+    (0,0,0) -- (0,0,2) -- (2,0,2) -- (2,0,0) -- cycle;
+  \draw[fill=block@example!20, draw=block@example]
+    (2,0,0) -- (2,2,0) -- (2,2,2) -- (2,0,2) -- cycle;
+  \draw[fill=block@alertblock!20, draw=block@alertblock]
+    (0,2,0) -- (2,2,0) -- (2,2,2) -- (0,2,2) -- cycle;
+  \draw[fill=yantex@gray, draw=yantex@darkgray]
+    (0,0,2) -- (2,0,2) -- (2,2,2) -- (0,2,2) -- cycle;
+\end{tikzpicture}
+\end{block}
+
+\begin{alertblock}{库依赖}
+\centering
+\texttt{3D} · \texttt{matrix} · \texttt{arrows.meta} ·\\
+\texttt{decorations.pathreplacing} · \texttt{shapes.geometric} · \texttt{fit} · \texttt{backgrounds}
+\end{alertblock}
+
+\column{0.48\textwidth}
+\begin{exampleblock}{装饰与矩阵}
+\centering
+\begin{tikzpicture}[
+  every node/.style={draw, minimum size=6mm, font=\tiny}]
+\matrix (m) [matrix of nodes,
+  ampersand replacement=\&,
+  row sep=2mm, column sep=2mm,
+  nodes={fill=yantex@light, draw=yantex@main}] {
+  $a_{11}$ \& $a_{12}$ \& $a_{13}$ \\
+  $a_{21}$ \& $a_{22}$ \& $a_{23}$ \\
+  $a_{31}$ \& $a_{32}$ \& $a_{33}$ \\
+};
+\draw[decorate, decoration={brace, mirror}, thick]
+  (m-3-1.south west) -- (m-3-3.south east)
+  node[midway, below=2pt, draw=none] {行向量};
+\end{tikzpicture}
+
+\vspace{0.3em}
+
+\begin{tikzpicture}[
+  fitnode/.style={draw=yantex@dark, dashed, thick, rounded corners}]
+\node[fill=yantex@main!10] (a) {节点A};
+\node[fill=block@example!10, right=of a] (b) {节点B};
+\node[fill=block@alertblock!10, below=of a] (c) {节点C};
+\node[fit=(a)(b)(c), fitnode, inner sep=3mm] {};
+\end{tikzpicture}
+\end{exampleblock}
+\end{columns}
+\end{frame}

@@ -1,0 +1,57 @@
+\begin{frame}
+\frametitle{TikZ 基础绘图}
+\framesubtitle{shapes.geometric · positioning · arrows.meta}
+
+\begin{columns}[T]
+\column{0.48\textwidth}
+\begin{block}{流程图示例}
+\centering
+\begin{tikzpicture}[
+  node distance=6mm and 8mm,
+  box/.style={rectangle, draw=yantex@main, thick,
+    fill=yantex@light, rounded corners=2pt,
+    minimum width=18mm, minimum height=7mm},
+  arrow/.style={-{Stealth[scale=1.2]}, thick, yantex@main}
+]
+\node[box] (start) {开始};
+\node[box, below=of start] (proc) {处理};
+\node[box, below=of proc] (dec) {判断};
+\node[box, right=of dec] (yes) {通过};
+\node[box, below=of dec] (no) {重试};
+\node[box, below=of no] (end) {结束};
+
+\draw[arrow] (start) -- (proc);
+\draw[arrow] (proc) -- (dec);
+\draw[arrow] (dec) -- (yes);
+\draw[arrow] (dec) -- (no);
+\draw[arrow] (no) -- (end);
+\draw[arrow] (yes) |- (proc);
+\end{tikzpicture}
+\end{block}
+
+\column{0.48\textwidth}
+\begin{exampleblock}{几何形状}
+\centering
+\begin{tikzpicture}[scale=0.7]
+\draw[fill=yantex@main!20, draw=yantex@main]
+  (0,0) circle (0.6);
+\draw[fill=yantex@light, draw=yantex@dark]
+  (1.5,0) ellipse (0.8 and 0.5);
+\draw[fill=block@example!20, draw=block@example]
+  (3.2,0.3) -- (4.2,0.3) -- (3.7,-0.7) -- cycle;
+\draw[fill=yantex@light, draw=yantex@main]
+  (0,-1.5) rectangle (1.2,-2.5);
+\draw[fill=block@alertblock!20, draw=block@alertblock]
+  (2,-1.5) -- (2.8,-1.5) -- (3.2,-2.5) -- (2.4,-2.5) -- cycle;
+\node[rotate=30, draw=yantex@dark, thick,
+  diamond, fill=yantex@main!10]
+  at (4.5,-2) {菱形};
+\end{tikzpicture}
+
+\vspace{0.3em}
+
+TikZ 支持\textbf{矩形}、\textbf{圆形}、\textbf{椭圆}、\textbf{菱形}、
+\textbf{多边形}等多种几何形状。
+\end{exampleblock}
+\end{columns}
+\end{frame}

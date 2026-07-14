@@ -11,9 +11,9 @@ all: build clean-build clean-root output
 xelatex:
 	@if not exist $(BUILD_DIR) mkdir $(BUILD_DIR)
 	@if defined STY_DIR ( \
-		$(TEX) -include-directory=$(STY_DIR) -output-directory=$(BUILD_DIR) $(MAIN).tex \
+		$(TEX) -interaction=nonstopmode -include-directory=$(STY_DIR) -output-directory=$(BUILD_DIR) $(MAIN).tex \
 	) else ( \
-		$(TEX) -output-directory=$(BUILD_DIR) $(MAIN).tex \
+		$(TEX) -interaction=nonstopmode -output-directory=$(BUILD_DIR) $(MAIN).tex \
 	)
 	@echo "Build successful"
 
@@ -21,20 +21,20 @@ xelatex:
 build: 
 	@if not exist $(BUILD_DIR) mkdir $(BUILD_DIR)
 	@if defined STY_DIR ( \
-		$(TEX) -include-directory=$(STY_DIR) -output-directory=$(BUILD_DIR) $(MAIN).tex \
+		$(TEX) -interaction=nonstopmode -include-directory=$(STY_DIR) -output-directory=$(BUILD_DIR) $(MAIN).tex \
 	) else ( \
-		$(TEX) -output-directory=$(BUILD_DIR) $(MAIN).tex \
+		$(TEX) -interaction=nonstopmode -output-directory=$(BUILD_DIR) $(MAIN).tex \
 	)
 	@$(BIB) --output-directory=$(BUILD_DIR) $(MAIN)
 	@if defined STY_DIR ( \
-		$(TEX) -include-directory=$(STY_DIR) -output-directory=$(BUILD_DIR) $(MAIN).tex \
+		$(TEX) -interaction=nonstopmode -include-directory=$(STY_DIR) -output-directory=$(BUILD_DIR) $(MAIN).tex \
 	) else ( \
-		$(TEX) -output-directory=$(BUILD_DIR) $(MAIN).tex \
+		$(TEX) -interaction=nonstopmode -output-directory=$(BUILD_DIR) $(MAIN).tex \
 	)
 	@if defined STY_DIR ( \
-		$(TEX) -include-directory=$(STY_DIR) -output-directory=$(BUILD_DIR) $(MAIN).tex \
+		$(TEX) -interaction=nonstopmode -include-directory=$(STY_DIR) -output-directory=$(BUILD_DIR) $(MAIN).tex \
 	) else ( \
-		$(TEX) -output-directory=$(BUILD_DIR) $(MAIN).tex \
+		$(TEX) -interaction=nonstopmode -output-directory=$(BUILD_DIR) $(MAIN).tex \
 	)
 	@echo "Build successful"
 	

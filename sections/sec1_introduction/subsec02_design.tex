@@ -1,0 +1,42 @@
+\begin{frame}
+\frametitle{设计理念}
+\framesubtitle{简洁·统一·可定制}
+
+\begin{columns}[T]
+\column{0.48\textwidth}
+\begin{block}{色彩系统}
+\centering
+\begin{tikzpicture}
+\fill[yantex@main] (0,0) rectangle (1.2,0.6);
+\fill[yantex@light] (1.4,0) rectangle (2.6,0.6);
+\fill[yantex@dark] (2.8,0) rectangle (4,0.6);
+\node[below,font=\tiny] at (0.6,-0.1) {Main};
+\node[below,font=\tiny] at (2,-0.1) {Light};
+\node[below,font=\tiny] at (3.4,-0.1) {Dark};
+\end{tikzpicture}
+\end{block}
+
+\vfill
+
+\begin{itemize}
+  \item 主色：深邃蓝 $56,67,120$
+  \item 浅色：明亮蓝 $224,242,255$
+  \item 深色：沉稳蓝 $43,51,92$
+\end{itemize}
+
+\column{0.48\textwidth}
+\begin{block}{模板结构}
+\begin{enumerate}
+  \item \structure{main.tex} — 入口编排
+  \item \structure{sectionhead/} — 节头索引
+  \item \structure{subsec*.tex} — 内容单元
+\end{enumerate}
+\end{block}
+
+\vfill
+
+\begin{alertblock}{开源许可}
+本模板采用 MIT 许可证，欢迎自由使用和修改。
+\end{alertblock}
+\end{columns}
+\end{frame}
