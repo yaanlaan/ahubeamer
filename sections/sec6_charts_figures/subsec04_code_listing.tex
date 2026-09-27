@@ -1,0 +1,24 @@
+\begin{frame}[fragile]
+\frametitle{代码高亮排版}
+\framesubtitle{listings 宏包与安大蓝主题配色适配}
+
+\begin{block}{Python 算法示例}
+\begin{lstlisting}[language=Python]
+def calculate_accuracy(y_true, y_pred):
+    """计算模型预测准确率"""
+    correct = sum(t == p for t, p in zip(y_true, y_pred))
+    return correct / len(y_true)
+
+# 评估并打印结果
+acc = calculate_accuracy([1, 0, 1, 1], [1, 0, 0, 1])
+print(f"Model Accuracy: {acc * 100:.2f}%")
+\end{lstlisting}
+\end{block}
+
+\vspace{-0.2em}
+\begin{minipage}{0.84\linewidth}
+\begin{alertblock}{使用提示}
+含有代码环境 \texttt{lstlisting} 的幻灯片，在 \texttt{\\begin\{frame\}} 处必须添加 \texttt{[fragile]} 参数。
+\end{alertblock}
+\end{minipage}
+\end{frame}

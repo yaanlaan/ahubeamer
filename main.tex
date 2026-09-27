@@ -1,67 +1,46 @@
-\documentclass[10pt]{beamer} % 推荐使用16:9比例
-% \special{dvipdfmx:config z 0} 
+\documentclass[10pt,aspectratio=169]{beamer}
 
-% 引入自定义主题（包含字体设置和常用包）
+% 引入自定义主题（包含字体设置、颜色和常用宏包）
 \usepackage{style/ahutheme}
 
 % 页边距设置
-\setbeamersize{text margin left=1cm, text margin right=1cm}
+\setbeamersize{text margin left=0.8cm, text margin right=0.8cm}
 
-\usepackage[backend=biber,style=gb7714-2015]{biblatex} % 推荐使用符合国标的格式
+% 参考文献设置（国标 gb7714-2015 格式）
+\usepackage[backend=biber,style=gb7714-2015]{biblatex}
 \addbibresource{citation/references.bib}
 
-% 添加主题
-\usepackage{style/ahutheme}
+% ==================== 水印 3：右下角 Beamer 原生 Logo（可选） ====================
+% 注释此行可取消右下角 logo
+\logo{\includegraphics[height=0.85cm]{assets/logo2.png}}
 
-% 设置右下角的logo，注释可以取消
-\logo{\includegraphics[height=1cm]{assets/logo2.png}}
+% 演示文稿元信息
+\title[AHU Slide 模板示例]{AHU Slide 模板示例}
+\subtitle{基于 beamer 的 \LaTeX{} 演示文稿模板}
+\author[Yaan \& Laan]{Yaan \and Laan}
+\institute[AHU]{Anhui University}
+\date[\today]{\today}
 
-% 标题信息
-\title{AHU Slide模板示例}
-\subtitle{基于beamer的\LaTeX{} ppt模板}
-\author{Yaan \and Laan}
-\institute{Anhui University}
-\date{\today}
-
-% 在每个section之前插入目录页
-% \AtBeginSection[]
-% {
-%   \begin{frame}
-%     \frametitle{\insertsectionhead}
-%     \tableofcontents[
-%                  sectionstyle=show/shaded, 
-%                  subsectionstyle=show/show/hide]
-%   \end{frame}
-% }
-
-% 分点过多的时候可以用这个
+% 在每个 section 之前插入过渡目录页（自适应高亮当前小节）
 \AtBeginSection[]
 {
   \begin{frame}
-    \frametitle{\insertsectionhead}
-    \begin{columns}[onlytextwidth]
-    \begin{column}{0.5\textwidth}
+    \frametitle{目录}
     \tableofcontents[
-                 sectionstyle=show/shaded, 
-                 subsectionstyle=show/show/hide,
-                 sections={1-4}]
-    \end{column}
-    \begin{column}{0.5\textwidth}
-    \tableofcontents[
-                 sectionstyle=show/shaded, 
-                 subsectionstyle=show/show/hide,
-                 sections={5-100}]
-    \end{column}
-    \end{columns}
+      currentsection,
+      sectionstyle=show/shaded,
+      subsectionstyle=show/show/hide
+    ]
   \end{frame}
 }
 
 \begin{document}
 
-
+% 封面页
 \input{pages/title.tex}
-\input{pages/toc.tex}
 
+% 目录页
+\input{pages/toc.tex}
 
 \section{模板纵览}
 \input{sections/sectionhead/sec1_introduction}
@@ -84,8 +63,7 @@
 \section{参考文献}
 \input{sections/sectionhead/sec7_references}
 
-
+% 致谢页
 \input{pages/thanks.tex}
-
 
 \end{document}

@@ -12,10 +12,10 @@
 \setmainfont{Times New Roman}    % 正文细节
 \setmonofont{Consolas}           % 代码展示
 
-% 中文字体设置
-\setCJKsansfont{Microsoft YaHei} % 标题、正文：微软雅黑（清晰）
-\setCJKmainfont{SimHei}          % 或使用黑体
-\setCJKmonofont{Consolas}        % 代码保持一致
+% 中文字体设置（配置 AutoFakeBold 与 AutoFakeSlant 以消除缺失斜体警告）
+\setCJKsansfont{Microsoft YaHei}[AutoFakeBold=2, AutoFakeSlant=0.2] % 标题、正文：微软雅黑
+\setCJKmainfont{SimHei}[AutoFakeBold=2, AutoFakeSlant=0.2]          % 正文或衬线备选：黑体
+\setCJKmonofont{Microsoft YaHei}[AutoFakeBold=2, AutoFakeSlant=0.2] % 中文代码等宽备选
 
 % 数学公式字体
 \usefonttheme[onlymath]{serif}
@@ -39,37 +39,68 @@
 \RequirePackage{caption}
 \setbeamertemplate{caption}[numbered]
 
+% ==================== 代码高亮环境配置 ====================
+\RequirePackage{listings}
+\definecolor{code@bg}{RGB}{248, 249, 252}
+\definecolor{code@comment}{RGB}{120, 130, 140}
+\definecolor{code@keyword}{RGB}{56, 67, 120}  % yantex@main
+\definecolor{code@string}{RGB}{53, 184, 108}  % block@example
+\definecolor{code@number}{RGB}{160, 160, 160}
+
+\lstdefinestyle{ahustyle}{
+  backgroundcolor=\color{code@bg},
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\bfseries\color{code@keyword},
+  commentstyle=\itshape\color{code@comment},
+  stringstyle=\color{code@string},
+  numbers=left,
+  numberstyle=\tiny\color{code@number},
+  stepnumber=1,
+  numbersep=8pt,
+  frame=single,
+  framerule=0.5pt,
+  rulecolor=\color{yantex@main!30},
+  breaklines=true,
+  breakatwhitespace=true,
+  showstringspaces=false,
+  tabsize=2,
+  columns=flexible,
+  keepspaces=true,
+  xleftmargin=1.5em,
+  framexleftmargin=1.5em
+}
+\lstset{style=ahustyle}
+
 % ==================== 颜色定义 ====================
-
-
-% 定义颜色
+% 安徽大学主题色彩
 \definecolor{yantex@main}{RGB}{56, 67, 120}      % 主蓝色
 \definecolor{yantex@light}{RGB}{224, 242, 255}    % 浅蓝色
 \definecolor{yantex@dark}{RGB}{43, 51, 92}       % 深蓝色
 \definecolor{yantex@gray}{RGB}{245, 245, 245}     % 浅灰色
 \definecolor{yantex@darkgray}{RGB}{117, 117, 117} % 深灰色
 
-% 设置block颜色
+% 块环境颜色
 \definecolor{block@example}{RGB}{53, 184, 108}      % 绿
 \definecolor{block@alertblock}{RGB}{167, 51, 51}    % 红
-\definecolor{block@block}{RGB}{88, 99, 155}      % 蓝
+\definecolor{block@block}{RGB}{88, 99, 155}         % 蓝
 
-% 设置背景图片，如果不喜欢可以更换背景或者注释隐藏
+% ==================== 水印 1：背景底纹水印（可选） ====================
+% 设置背景图片，如果不喜欢可以更换背景或者注释隐藏本段
 \setbeamertemplate{background}{
   \begin{pgfpicture}{0cm}{0cm}{\paperwidth}{\paperheight}
     % 背景图片 - 靠右对齐
     \pgftext[at=\pgfpoint{\paperwidth}{0.5\paperheight},right]{
       \includegraphics[width=\paperwidth, height=\paperheight, keepaspectratio=true]{assets/background.pdf}
     }
-    % 添加半透明遮罩以提高文本可读性
-    \pgfsetfillopacity{0.8}
+    % 半透明遮罩以保证文字高对比度可读性
+    \pgfsetfillopacity{0.88}
     \pgfsetfillcolor{white}
     \pgfpathrectangle{\pgfpoint{0cm}{0cm}}{\pgfpoint{\paperwidth}{\paperheight}}
     \pgfusepath{fill}
   \end{pgfpicture}
 }
 
-% 设置颜色主题
+% 设置基本颜色主题
 \setbeamercolor*{structure}{fg=yantex@main}
 \setbeamercolor*{title}{fg=white, bg=yantex@main}
 \setbeamercolor*{subtitle}{fg=white}
@@ -80,41 +111,42 @@
 \setbeamercolor*{framesubtitle}{fg=yantex@dark}
 \setbeamercolor*{normal text}{fg=black, bg=}
 
-% 设置导航栏颜色
+% 设置顶栏导航栏颜色
 \setbeamercolor*{section in head/foot}{fg=white, bg=yantex@dark}
 \setbeamercolor*{subsection in head/foot}{fg=white!90!yantex@main, bg=yantex@dark}
 
 % 设置块环境颜色
-\setbeamercolor*{block title}{fg=white, bg=yantex@main}
-\setbeamercolor*{block body}{fg=black, bg=yantex@light}
-\setbeamercolor*{block title alerted}{fg=white, bg=red!70!black}
-\setbeamercolor*{block body alerted}{fg=black, bg=red!10}
-\setbeamercolor*{block title example}{fg=white, bg=green!50!black}
-\setbeamercolor*{block body example}{fg=black, bg=green!10}
+\setbeamercolor*{block title}{fg=white, bg=block@block}
+\setbeamercolor*{block body}{fg=black, bg=block@block!10!white}
+\setbeamercolor*{block title alerted}{fg=white, bg=block@alertblock}
+\setbeamercolor*{block body alerted}{fg=black, bg=block@alertblock!10!white}
+\setbeamercolor*{block title example}{fg=white, bg=block@example}
+\setbeamercolor*{block body example}{fg=black, bg=block@example!10!white}
 
-% 设置页眉，水平导航栏
+% 设置页眉水平导航栏
 \setbeamertemplate{headline}{
   \begin{beamercolorbox}[wd=\paperwidth,ht=2.6ex,dp=1ex]{section in head/foot}
     \hfill\insertsectionnavigationhorizontal{\paperwidth}{}{}\hfill
   \end{beamercolorbox}
 }
 
-% 设置框架标题
+% ==================== 水印 2：框架标题右上角 Logo（可选） ====================
+% 设置框架标题（不喜欢右上角 logo 可以注释 \raisebox{...}）
 \setbeamertemplate{frametitle}{
   \vspace{-0.25ex}% 微调垂直位置
   \begin{beamercolorbox}[wd=\paperwidth,ht=3ex,dp=0.8ex]{frametitle}
     \hspace*{0.3cm}\strut\insertframetitle\strut
     \hfill
-    % 不喜欢右上角的logo可以注释隐藏
+    % 右上角的 logo 水印
     \raisebox{0.2ex}{\includegraphics[height=2ex, keepaspectratio]{assets/logo.png}}\hspace*{0.4cm}
   \end{beamercolorbox}
 }
 
-% 设置页脚 - 三部分使用不同背景颜色
+% 设置页脚 - 三部分自适应展示，防止多作者/长标题溢出
 \setbeamertemplate{footline}{
   \hbox to \paperwidth{%
   \begin{beamercolorbox}[wd=0.333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}
-    \usebeamerfont{author in head/foot}\insertauthor
+    \usebeamerfont{author in head/foot}\insertshortauthor
   \end{beamercolorbox}%
   \begin{beamercolorbox}[wd=0.334\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}
     \usebeamerfont{title in head/foot}\insertshorttitle
@@ -132,29 +164,29 @@
 \setbeamercolor*{title in head/foot}{fg=black, bg=yantex@light}
 \setbeamercolor*{date in head/foot}{fg=white, bg=yantex@dark}
 
-% 设置标题页
+% 设置标题页（封面）
 \setbeamertemplate{title page}{
   \vfill
-  \hspace*{0.4cm}% 微调水平位置
-  \begin{beamercolorbox}[wd=0.8\paperwidth, sep=8pt, rounded=true, shadow=true, center]{title}
+  \centering
+  \begin{beamercolorbox}[wd=0.85\paperwidth, sep=10pt, rounded=true, shadow=false, center]{title}
     \centering
-    \usebeamerfont{title}\inserttitle\par%
+    {\usebeamerfont{title}\Large\textbf{\inserttitle}}\par%
     \ifx\insertsubtitle\@empty%
     \else%
-      \vskip0.5em%
-      {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \vskip0.6em%
+      {\usebeamerfont{subtitle}\small\insertsubtitle\par}%
     \fi%
   \end{beamercolorbox}
   
-  \vskip2em
+  \vskip1.5em
   
   \begin{beamercolorbox}[wd=\paperwidth, center]{normal text}
     \centering
-    \usebeamerfont{author}\insertauthor\par
+    {\usebeamerfont{author}\large\textbf{\insertauthor}}\par
     \vskip0.5em
-    \usebeamerfont{institute}\insertinstitute\par
-    \vskip1em
-    \usebeamerfont{date}\insertdate\par
+    {\usebeamerfont{institute}\normalsize\color{yantex@dark}\insertinstitute}\par
+    \vskip0.8em
+    {\usebeamerfont{date}\small\color{yantex@darkgray}\insertdate}\par
   \end{beamercolorbox}
   \vfill
 }
@@ -164,10 +196,10 @@
 \setbeamertemplate{subsection in toc}[square]
 \setbeamertemplate{subsubsection in toc}[default]
 
-% 设置块环境
-\setbeamertemplate{blocks}[rounded][shadow=true]
+% 设置块环境（默认圆角，不启用厚重阴影以保持清新）
+\setbeamertemplate{blocks}[rounded][shadow=false]
 
-% 设置导航符号
+% 设置导航符号（保持开启）
 \setbeamertemplate{navigation symbols}{
   \insertslidenavigationsymbol
   \insertframenavigationsymbol
@@ -186,8 +218,7 @@
 \setbeamercolor*{itemize subitem}{fg=yantex@main}
 \setbeamercolor*{itemize subsubitem}{fg=yantex@main}
 
-
-% 设置枚举项样式 - 与项目符号风格一致
+% 设置枚举项样式
 \setbeamertemplate{enumerate item}[square]
 \setbeamertemplate{enumerate subitem}[circle]
 \setbeamertemplate{enumerate subsubitem}[default]
@@ -195,15 +226,5 @@
 \setbeamercolor*{enumerate item}{fg=white, bg=yantex@main}
 \setbeamercolor*{enumerate subitem}{fg=white, bg=yantex@dark}
 \setbeamercolor*{enumerate subsubitem}{fg=black, bg=yantex@light}
-
-% block颜色
-\setbeamercolor*{block title example}{fg=white, bg=block@example}
-\setbeamercolor*{block body example}{fg=black, bg=block@example!10!white} 
-
-\setbeamercolor*{block title alerted}{fg=white, bg=block@alertblock}
-\setbeamercolor*{block body alerted}{fg=black, bg=block@alertblock!10!white} 
-
-\setbeamercolor*{block title}{fg=white, bg=block@block}
-\setbeamercolor*{block body}{fg=black, bg=block@block!10!white} 
 
 \mode<all>
